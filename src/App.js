@@ -1,21 +1,63 @@
-import React from "react";
-import { Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { Route } from "react-router-dom";
 import Cards from "./components/Card";
 import Navi from "./components/Nav";
 import Label from "./components/Label";
-import Data from "./components/data";
 import EditForm from "./components/EditForm";
 
-
 function App() {
+  const [data, setData] = useState([
+    {
+      id: 0,
+      name: "All Purpose Flour",
+      brand: "Pillsbury",
+      packagingAmount: 10.0,
+      packaging: "plastic",
+      stock: 68000.0,
+      threshold: 5000,
+      ceiling: 20000,
+      unit: "kg",
+      amount: 6800,
+      status: "active"
+    },
+    {
+      id: 1,
+      name: "Black Pepper",
+      brand: null,
+      packagingAmount: 5.0,
+      packaging: "plastic",
+      stock: 1000.0,
+      threshold: 5000,
+      ceiling: 20000,
+      unit: "kg",
+      amount: 200,
+      status: "active"
+    }
+  ]);
+
+  const addData = newData => {
+    newData.id = data.length + 1;
+    setData([...data, newData]);
+  };
+
+  const deleteData = id => {
+    setData(data.filter(item => item.id !== id));
+  };
+
   return (
     <div className="App">
       <Route exact path="/">
-      <Navi />
-      <Label />
-      <Cards data={Data} />
+        <Navi
+          addData={data => {
+            addData(data);
+          }}
+        />
+        <Label />
+        <Cards data={data} delete={id => deleteData(id)} />
       </Route>
-      <Route path="/edit" component={EditForm}/>
+      <Route path="/edit">
+        <EditForm data={data} />
+      </Route>
     </div>
   );
 }

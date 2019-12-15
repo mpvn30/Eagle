@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 
-const Cards = ({ data }) => {
+const Cards = props => {
   const renderTable = data => {
     const mapped = data.map(i => {
       return (
@@ -22,7 +22,11 @@ const Cards = ({ data }) => {
             </Button>
           </Col>
           <Col>
-            <Button color="secondary" size="sm">
+            <Button
+              color="secondary"
+              size="sm"
+              onClick={() => props.delete(i.id)}
+            >
               Delete
             </Button>
           </Col>
@@ -32,7 +36,7 @@ const Cards = ({ data }) => {
     return mapped;
   };
 
-  return <Container>{renderTable(data)}</Container>;
+  return <Container>{renderTable(props.data)}</Container>;
 };
 
 export default Cards;
