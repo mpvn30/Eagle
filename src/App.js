@@ -4,8 +4,26 @@ import Cards from "./components/Card";
 import Navi from "./components/Nav";
 import Label from "./components/Label";
 import EditForm from "./components/EditForm";
+import "./components/styles.css"
 
 function App() {
+  const [editing, setEditing] = useState(false)
+
+  const initialFormState = {
+    id: null,
+    name: "",
+    brand: "",
+    packagingAmount: "",
+    packaging: "",
+    stock: "",
+    threshold: "",
+    ceiling: "",
+    unit: "",
+    amount: "",
+    status: ""
+  };
+  const [currentData, setCurrentData] = useState(initialFormState)
+
   const [data, setData] = useState([
     {
       id: 0,
@@ -44,6 +62,28 @@ function App() {
     setData(data.filter(item => item.id !== id));
   };
 
+  const editRow = newData => {
+    setEditing(true)
+  
+    setCurrentData({  id: newData.id,
+      name: newData.name,
+      brand: newData.brand,
+      packagingAmount: newData.packagingAmount,
+      packaging: newData.packaging,
+      stock: newData.stock,
+      threshold: newData.threshold,
+      ceiling: newData.ceiling,
+      unit: newData.unit,
+      amount: newData.amount,
+      status: newData.status })
+  }
+
+  const updateData = (id, updatedData) => {
+    setEditing(false)
+  
+    setData(data.map(item => (item.id === id ? updatedData : item)))
+  }
+
   return (
     <div className="App">
       <Route exact path="/">
@@ -53,11 +93,12 @@ function App() {
           }}
         />
         <Label />
-        <Cards data={data} delete={id => deleteData(id)} />
+        <Cards data={data} delete={id => deleteData(id)} editRow={editRow} />
       </Route>
-      <Route path="/edit">
-        <EditForm data={data} />
-      </Route>
+        <EditForm editing={editing}
+        setEditing={setEditing}
+        currentData={currentData}
+        updateData={updateData} />
     </div>
   );
 }

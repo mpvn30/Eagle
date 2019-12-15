@@ -46,11 +46,8 @@ const Navi = props => {
         <BreadcrumbItem>
           <a href="#">Home</a>
         </BreadcrumbItem>
-        <BreadcrumbItem>
-          <a href="#">Library</a>
-        </BreadcrumbItem>
-        <Button color="danger" onClick={toggle}>
-          {buttonLabel}
+        <Button color="primary" onClick={toggle}>
+          Add Ingredient
         </Button>
         <Modal isOpen={modal} toggle={toggle} className={className}>
           <ModalHeader toggle={toggle}>Modal title</ModalHeader>
@@ -126,12 +123,12 @@ const Navi = props => {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="measurement">measurement</Label>
+              <Label for="unit">measurement</Label>
               <Input
-                type="measurement"
-                name="measurement"
-                id="measurement"
-                placeholder="measurement"
+                type="unit"
+                name="unit"
+                id="unit"
+                placeholder="unit"
                 onChange={handleInputChange}
               />
             </FormGroup>

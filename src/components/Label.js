@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import './Label.css'
 
 const Label = (props) => {
   return (

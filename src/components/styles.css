@@ -15,3 +15,15 @@
     width: 20%;
     border: 1px solid black;
 }
+.row{
+    width: 80vw;
+    margin: 0 auto !important;
+}
+.btn-primary{
+    width: 100px;
+    font-size: .8rem;
+}
+
+.breadcrumb-item{
+    padding-right: 10px !important;
+}
