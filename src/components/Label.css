@@ -1,0 +1,17 @@
+*{
+    margin: 0 !important;
+    padding: 0 !important
+}
+.card-container{
+    padding-top: 100px !important;
+    max-width: 80vw !important;
+    margin: 0 auto !important;
+}
+.container{
+    max-width: 80vw !important;
+    margin: 0 auto !important;
+}
+.col{
+    width: 20%;
+    border: 1px solid black;
+}
