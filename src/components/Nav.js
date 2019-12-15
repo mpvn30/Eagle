@@ -1,13 +1,17 @@
-import React from 'react';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import React from "react";
+import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 
-const Navi = (props) => {
+const Navi = props => {
   return (
     <div>
       <Breadcrumb>
-        <BreadcrumbItem><a href="#">Home</a></BreadcrumbItem>
-        <BreadcrumbItem><a href="#">Library</a></BreadcrumbItem>
-        <BreadcrumbItem active>Data</BreadcrumbItem>
+        <BreadcrumbItem>
+          <a href="#">Home</a>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <a href="#">Library</a>
+        </BreadcrumbItem>
+        <Button>Add Data</Button>
       </Breadcrumb>
     </div>
   );
