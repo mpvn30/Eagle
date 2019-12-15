@@ -17,7 +17,7 @@ const Cards = ({ data }) => {
           <Col>{i.amount}</Col>
           <Col>{i.status}</Col>
           <Col>
-            <Button color="primary" size="sm">
+            <Button color="primary" size="sm" href="/edit">
               Edit
             </Button>
           </Col>
